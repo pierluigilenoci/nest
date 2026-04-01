@@ -7,7 +7,7 @@
     "build": "tsc -p tsconfig.build.json",
     "build:dev": "nest build --watch --webpack --webpackPath webpack-hmr.config.js",
     "start": "node dist/main",
-    "lint": "eslint '{src,apps,libs,test}/**/*.ts' --fix",
+    "lint": "oxlint src --fix",
     "test": "echo 'No tests implemented yet.'",
     "test:e2e": "vitest run --config ./vitest.config.e2e.mts"
   },
@@ -20,22 +20,17 @@
     "typescript": "6.0.2"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "3.3.3",
-    "@eslint/js": "9.39.2",
     "@nestjs/cli": "11.0.16",
     "@nestjs/schematics": "11.0.9",
     "@types/node": "24.10.13",
-    "eslint": "9.39.2",
-    "eslint-plugin-prettier": "5.5.5",
-    "globals": "17.3.0",
+    "oxlint": "1.58.0",
     "start-server-webpack-plugin": "2.2.5",
     "ts-loader": "9.5.4",
     "ts-node": "10.9.2",
+    "vitest": "4.1.2",
     "webpack": "5.105.2",
     "webpack-cli": "6.0.1",
-    "webpack-node-externals": "3.0.0",
-    "typescript-eslint": "8.54.0",
-    "vitest": "4.1.2"
+    "webpack-node-externals": "3.0.0"
   },
   "type": "module"
 }
