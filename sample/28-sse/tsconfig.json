@@ -15,7 +15,11 @@
       "vitest/globals"
     ],
     "rootDir": "./src",
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "useUnknownInCatchVariables": false
   },
   "include": [
     "src/**/*"
