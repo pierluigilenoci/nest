@@ -13,7 +13,7 @@
     "start:debug": "nest start --debug --watch",
     "start:dev:hmr": "nest build --webpack --webpackPath webpack-hmr.config.cjs --watch",
     "start:prod": "node dist/main",
-    "lint": "eslint '{src,apps,libs,test}/**/*.ts' --fix",
+    "lint": "oxlint src --fix",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:cov": "vitest run --coverage",
@@ -31,11 +31,6 @@
     "rxjs": "7.8.2"
   },
   "devDependencies": {
-    "run-script-webpack-plugin": "0.2.3",
-    "webpack": "5.105.2",
-    "webpack-node-externals": "3.0.0",
-    "@eslint/eslintrc": "3.3.3",
-    "@eslint/js": "9.39.2",
     "@nestjs/cli": "11.0.16",
     "@nestjs/schematics": "11.0.9",
     "@nestjs/testing": "11.1.13",
@@ -43,16 +38,16 @@
     "@types/node": "24.10.11",
     "@types/supertest": "6.0.3",
     "@types/webpack-env": "1.18.8",
+    "oxlint": "1.58.0",
     "prettier": "3.8.1",
+    "run-script-webpack-plugin": "0.2.3",
     "supertest": "7.2.2",
     "ts-loader": "9.5.4",
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
-    "eslint": "9.39.2",
-    "eslint-plugin-prettier": "5.5.5",
-    "globals": "17.3.0",
     "typescript": "6.0.2",
-    "typescript-eslint": "8.54.0",
-    "vitest": "4.1.2"
+    "vitest": "4.1.2",
+    "webpack": "5.105.2",
+    "webpack-node-externals": "3.0.0"
   }
 }
