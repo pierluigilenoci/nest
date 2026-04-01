@@ -22,7 +22,7 @@ export class CatsResolver {
   async findOneById(
     @Args('id', ParseIntPipe)
     id: number,
-  ): Promise<Cat> {
+  ): Promise<Cat | undefined> {
     return this.catsService.findOneById(id);
   }
 

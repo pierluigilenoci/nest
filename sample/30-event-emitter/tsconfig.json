@@ -16,10 +16,7 @@
     ],
     "rootDir": "./src",
     "useDefineForClassFields": false,
-    "strictPropertyInitialization": false,
-    "noImplicitAny": false,
-    "noUnusedLocals": false,
-    "useUnknownInCatchVariables": false
+    "strictPropertyInitialization": false
   },
   "include": [
     "src/**/*",

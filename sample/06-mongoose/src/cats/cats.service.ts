@@ -18,17 +18,17 @@ export class CatsService {
     return this.catModel.find().exec();
   }
 
-  async findOne(id: string): Promise<Cat> {
+  async findOne(id: string): Promise<Cat | null> {
     return this.catModel.findOne({ _id: id }).exec();
   }
 
-  async update(id: string, updateCatDto: UpdateCatDto): Promise<Cat> {
+  async update(id: string, updateCatDto: UpdateCatDto): Promise<Cat | null> {
     return this.catModel
       .findByIdAndUpdate({ _id: id }, updateCatDto, { new: true })
       .exec();
   }
 
-  async delete(id: string): Promise<Cat> {
+  async delete(id: string): Promise<Cat | null> {
     const deletedCat = await this.catModel
       .findByIdAndDelete({ _id: id })
       .exec();

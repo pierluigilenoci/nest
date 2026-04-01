@@ -21,7 +21,7 @@ export class UsersService {
     return this.userModel.findAll();
   }
 
-  findOne(id: string): Promise<User> {
+  findOne(id: string): Promise<User | null> {
     return this.userModel.findOne({
       where: {
         id,
@@ -31,6 +31,6 @@ export class UsersService {
 
   async remove(id: string): Promise<void> {
     const user = await this.findOne(id);
-    await user.destroy();
+    await user?.destroy();
   }
 }

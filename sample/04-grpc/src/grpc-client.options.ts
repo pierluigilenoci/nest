@@ -10,7 +10,7 @@ export const grpcClientOptions: GrpcOptions = {
   options: {
     package: 'hero', // ['hero', 'hero2']
     protoPath: join(__dirname, './hero/hero.proto'), // ['./hero/hero.proto', './hero/hero2.proto']
-    onLoadPackageDefinition: (pkg, server) => {
+    onLoadPackageDefinition: (pkg: any, server: any) => {
       new ReflectionService(pkg).addToServer(server);
     },
   },

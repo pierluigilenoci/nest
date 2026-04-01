@@ -46,7 +46,7 @@ export class HeroController implements OnModuleInit {
 
   @GrpcMethod('HeroesService')
   findOne(data: HeroById): Hero {
-    return this.items.find(({ id }) => id === data.id);
+    return this.items.find(({ id }) => id === data.id)!;
   }
 
   @GrpcStreamMethod('HeroesService')
@@ -54,7 +54,7 @@ export class HeroController implements OnModuleInit {
     const hero$ = new Subject<Hero>();
 
     const onNext = (heroById: HeroById) => {
-      const item = this.items.find(({ id }) => id === heroById.id);
+      const item = this.items.find(({ id }) => id === heroById.id)!;
       hero$.next(item);
     };
     const onComplete = () => hero$.complete();
