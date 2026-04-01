@@ -175,17 +175,6 @@
       "type: code style": "Code style tweaks",
       "dependencies": "Dependencies"
     }
-  },
-  "optionalDependencies": {
-    "@oxlint/binding-darwin-arm64": "^1.58.0",
-    "@oxlint/binding-darwin-x64": "^1.58.0",
-    "@oxlint/binding-linux-x64-gnu": "^1.58.0",
-    "@oxlint/binding-linux-x64-musl": "^1.58.0",
-    "@oxlint/binding-linux-arm64-gnu": "^1.58.0",
-    "@rolldown/binding-darwin-arm64": "^1.0.0-rc.12",
-    "@rolldown/binding-darwin-x64": "^1.0.0-rc.12",
-    "@rolldown/binding-linux-x64-gnu": "^1.0.0-rc.12",
-    "@rolldown/binding-linux-x64-musl": "^1.0.0-rc.12",
-    "@rolldown/binding-linux-arm64-gnu": "^1.0.0-rc.12"
   }
 }
+
