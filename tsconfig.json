@@ -18,7 +18,7 @@
     "sourceMap": true,
     "allowJs": false,
     "outDir": "dist",
-    "baseUrl": ".",
+    "types": ["node"],
     "paths": {
       "@nestjs/common": ["./packages/common"],
       "@nestjs/common/*": ["./packages/common/*"],
