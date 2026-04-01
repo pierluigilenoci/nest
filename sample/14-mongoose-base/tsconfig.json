@@ -8,11 +8,14 @@
     "target": "ES2023",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
     "moduleResolution": "nodenext",
-    "types": ["vitest/globals"]
+    "types": [
+      "vitest/globals"
+    ],
+    "rootDir": "./src",
+    "useDefineForClassFields": false
   },
   "include": [
     "src/**/*"
