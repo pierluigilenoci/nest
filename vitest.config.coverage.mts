@@ -1,16 +1,4 @@
-/**
- * Vitest config for coverage collection.
- *
- * Uses esbuild (the default) instead of unplugin-swc so that V8/Istanbul
- * coverage instrumentation works correctly.  unplugin-swc disables esbuild
- * which breaks both coverage providers entirely.
- *
- * Trade-off: esbuild does NOT emit decorator metadata, so tests that rely
- * on `Reflect.getMetadata('design:paramtypes', …)` will fail.  That's
- * acceptable here — we only care about coverage numbers, not test results.
- */
 import { existsSync } from 'fs';
-import path from 'path';
 import type { Plugin } from 'vite';
 import { defineConfig } from 'vitest/config';
 
@@ -25,11 +13,14 @@ function resolveTypescriptSource(): Plugin {
   return {
     name: 'resolve-ts-source',
     enforce: 'pre',
-    resolveId(source, importer) {
-      if (!importer || !source.startsWith('.')) return null;
-      const abs = path.resolve(path.dirname(importer), source);
-      if (abs.endsWith('.js')) {
-        const tsPath = abs.replace(/\.js$/, '.ts');
+    async resolveId(source, importer, options) {
+      if (!importer) return null;
+      const resolved = await this.resolve(source, importer, {
+        ...options,
+        skipSelf: true,
+      });
+      if (resolved && !resolved.external && resolved.id.endsWith('.js')) {
+        const tsPath = resolved.id.replace(/\.js$/, '.ts');
         if (existsSync(tsPath)) return tsPath;
       }
       return null;

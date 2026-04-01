@@ -1,4 +1,3 @@
-import swc from 'unplugin-swc';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
@@ -7,6 +6,5 @@ export default defineConfig({
     root: './',
     include: ['e2e/**/*.e2e-spec.ts'],
     hookTimeout: 30000,
-  },
-  plugins: [swc.vite()],
+  }
 });
