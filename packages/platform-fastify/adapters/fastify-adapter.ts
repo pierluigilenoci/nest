@@ -675,6 +675,18 @@ export class FastifyAdapter<
     if (!this.isMiddieRegistered) {
       await this.registerMiddie();
     }
+
+    // When the request method is "ALL" (or -1 for string routes from
+    // forRoutes('/prefix')), use prefix matching (end: false) to match
+    // sub-routes under the given path — this mirrors Express's app.use()
+    // behavior for prefix-based middleware. For specific HTTP methods
+    // (from forRoutes(Controller) or forRoutes({ path, method })), use
+    // exact matching (end: true) to prevent middleware from firing on
+    // sub-routes when multiple routes are registered for the same
+    // middleware (the "execute only once" guarantee).
+    const isMethodAll =
+      requestMethod === RequestMethod.ALL || (requestMethod as number) === -1;
+
     return (path: string, callback: Function) => {
       const hasEndOfStringCharacter = path.endsWith('$');
       path = hasEndOfStringCharacter ? path.slice(0, -1) : path;
@@ -693,10 +705,10 @@ export class FastifyAdapter<
       }
 
       try {
-        let { regexp: re } = pathToRegexp(normalizedPath);
-        re = hasEndOfStringCharacter
-          ? new RegExp(re.source + '$', re.flags)
-          : re;
+        const endMatch = hasEndOfStringCharacter || !isMethodAll;
+        const { regexp: re } = pathToRegexp(normalizedPath, {
+          end: endMatch,
+        });
 
         // The following type assertion is valid as we use import('@fastify/middie') rather than require('@fastify/middie')
         // ref https://github.com/fastify/middie/pull/55
